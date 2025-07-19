@@ -1,0 +1,16 @@
+# Python installation - use the file below :
+	D:\Santosh_learning\EAG-V1(Extensive AI Agents Program)
+	- Make sure that you select custom installation
+	- And also make sure to mark add env variables as well
+	- pip will be auto installed
+	- make sure to install uv and start using it for your projects
+	- within a uv project always activate virtual environment automatically created by uv using the command - .\.venv\Scripts\activate
+	
+# node.js installation - use the file provided below :
+	D:\Santosh_learning\EAG-V1(Extensive AI Agents Program)
+	- This also automatically installs npm
+	- make sure to not select automatically install chocolate or other dependencies - this will phenominally mess up your environment.
+	
+# mcp inspector setup instructions :
+	- command to run is - mcp dev <name_mcp_server.py>
+	- After UI launches - before hitting connect make sure that your text field under command is having this "python .\class_files\example_mcp_server.py dev" - You should provide the actual path of the file if its not in same path where you launched mcp inspector from & also followed by dev.
