@@ -12,5 +12,22 @@
 	- make sure to not select automatically install chocolate or other dependencies - this will phenominally mess up your environment.
 	
 # mcp inspector setup instructions :
-	- command to run is - mcp dev <name_mcp_server.py>
+	- command to run is - "mcp dev <name_mcp_server.py>"
 	- After UI launches - before hitting connect make sure that your text field under command is having this "python .\class_files\example_mcp_server.py dev" - You should provide the actual path of the file if its not in same path where you launched mcp inspector from & also followed by dev.
+	
+# Running jupyter in uv project :
+	"uv run --with jupyter jupyter lab"
+	With this command you will be able to access all packages in uv project's virtual environment
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
