@@ -1,0 +1,25 @@
+To run your python client file :
+"python mcp_client.py"
+
+To run your TypeScript file (mcp_client_typescript.ts) from the command line, follow these steps:
+1. Check Prerequisites
+Node.js: Make sure Node.js is installed (node -v).
+TypeScript: Make sure TypeScript is installed (tsc -v). If not, install it globally:
+"npm install -g typescript"
+Dependencies: Your code imports from @modelcontextprotocol/sdk and uses Node.js built-in modules.
+If you haven't installed the SDK, you need to do so (see below).
+
+2. Install Required Packages
+Navigate to the directory containing your package.json (if you have one), or initialize a new Node.js project:
+"npm init -y"
+Then install the required SDK (replace with the correct package name if different):
+"npm install @modelcontextprotocol/sdk"
+
+3. Transpile TypeScript to JavaScript
+From the directory containing your .ts file, run:
+"npx tsc mcp_client_typescript.ts"
+This will generate a mcp_client_typescript.js file in the same directory (unless your tsconfig.json specifies otherwise).
+
+4. Run the Compiled JavaScript
+Now, run the output JavaScript file with Node.js:
+"node mcp_client_typescript.js"
