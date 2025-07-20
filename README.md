@@ -1,1 +1,1 @@
-This is reporistory where we will embark on a journey of exploring the power of AGENTIC AI.
+This is repository where we will embark on a journey of exploring the power of AGENTIC AI.
