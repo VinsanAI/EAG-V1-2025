@@ -180,7 +180,7 @@ async def draw_rectangle(x1: int, y1: int, x2: int, y2: int) -> dict:
             time.sleep(0.2)
         
         # Click on the Rectangle tool using the correct coordinates for secondary screen
-        paint_window.click_input(coords=(530, 82 ))
+        paint_window.click_input(coords=(543, 93))
         time.sleep(0.2)
         
         # Get the canvas area
@@ -234,8 +234,8 @@ async def add_text_in_paint(text: str) -> dict:
             time.sleep(0.5)
         
         # Click on the Rectangle tool
-        paint_window.click_input(coords=(528, 92))
-        time.sleep(0.5)
+        # paint_window.click_input(coords=(528, 92))
+        # time.sleep(0.5)
         
         # Get the canvas area
         canvas = paint_window.child_window(class_name='MSPaintView')
@@ -246,8 +246,14 @@ async def add_text_in_paint(text: str) -> dict:
         paint_window.type_keys('x')
         time.sleep(0.5)
         
-        # Click where to start typing
-        canvas.click_input(coords=(810, 533))
+        # Selecting bigger font size
+        paint_window.click_input(coords=(848, 206))
+        time.sleep(0.2)
+        paint_window.click_input(coords=(841, 543))
+        time.sleep(0.2)
+
+         # Click where to start typing
+        canvas.click_input(coords=(1189, 540))
         time.sleep(0.5)
         
         # Type the text passed from client
