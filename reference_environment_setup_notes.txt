@@ -19,6 +19,12 @@
 	"uv run --with jupyter jupyter lab"
 	With this command you will be able to access all packages in uv project's virtual environment
 	
+====================================================================================================================================
+
+# In Mac - How to run mcp inspector:
+	- Always change directory to the folder where mcp_server.py file
+	- Run the command - "mcp dev mcp_server.py"
+	- Once the UI launches - under arguments text field change the name mcp_server.py to ./mcp_server.py (optional)
 	
 	
 	
