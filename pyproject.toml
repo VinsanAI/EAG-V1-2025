@@ -5,9 +5,14 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "numpy",
     "google-genai>=1.25.0",
     "python-dotenv",
     "mcp[cli]",
     "Pillow",
     "pywinauto",
+    "faiss-cpu",
+    "requests",
+    "ollama",
+    "scipy>=1.16.3",
 ]
