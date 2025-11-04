@@ -27,7 +27,7 @@ async def main(user_input: str):
         server_params = StdioServerParameters(
             command="python",
             args=["example3.py"],
-            cwd="I:/TSAI/2025/EAG/Session 7/S7"
+            cwd="/Volumes/SSD-Santosh/Santosh Code Files/EAG-V1-2025/class_files/Session 7/Advanced RAG E2E"
         )
 
         try:

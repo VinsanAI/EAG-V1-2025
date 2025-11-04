@@ -15,4 +15,6 @@ dependencies = [
     "requests",
     "ollama",
     "scipy>=1.16.3",
+    "tqdm>=4.67.1",
+    "markitdown[all]>=0.1.3",
 ]

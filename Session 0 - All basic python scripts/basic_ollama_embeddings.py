@@ -6,11 +6,16 @@ def get_embeddings(text: str) -> np.ndarray:
     response = requests.post(
         "http://localhost:11434/api/embeddings",
         json={
-            "model": "nomic-embed-text", 
+            # "model": "nomic-embed-text",
+            "model": "bge-m3", 
             "prompt": text
         }
     )
     response.raise_for_status()
     return np.array(response.json()["embedding"], dtype=np.float32)
 
-print(get_embeddings("Hello, world!")[:5])
+
+embeddings = get_embeddings("This world is filled with love and happiness")
+print(len(embeddings))
+print(embeddings[:5])
+print(np.stack(embeddings).shape)
