@@ -5,7 +5,7 @@ import datetime
 from pathlib import Path
 from perception import extract_perception
 from memory import MemoryManager, MemoryItem
-# from decision import generate_plan
+from decision import generate_plan
 # from action import execute_tool
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
@@ -146,6 +146,9 @@ async def main(user_input: str):
                                     print(f"    Type: {item.type}, Tags: {item.tags}, Session: {item.session_id}")
                             else:
                                 print("  No results found.")
+
+                            plan = generate_plan(perception, retrieved, tool_descriptions=tool_descriptions)
+                            log("plan", f"Plan generated: {plan}")
 
                             # while step < max_steps:
                             #     log("loop", f"Step {step + 1} started")

@@ -298,6 +298,11 @@ def debug_error(error: str) -> list[base.Message]:
         base.AssistantMessage("I'll help debug that. What have you tried so far?"),
     ]
 
+@mcp.tool()
+def schedule_meeting(audience_email_dl: str, meeting_date: str, meeting_duration: str, start_time: str, end_time: str) -> str:
+    """Schedule a meeting and send the google calendar invite to the input audience email distribution list"""
+    print(f"\n\"Scheduled a meeting with email: '{audience_email_dl}' on '{meeting_date}' for duration of '{meeting_duration}' minutes at '{meeting_start_time}'\"")
+
 if __name__ == "__main__":
     print("Starting MCP Server - Custom Agentic Flow")
 
