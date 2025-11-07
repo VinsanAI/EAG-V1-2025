@@ -37,3 +37,9 @@ class ExpSumInput(BaseModel):
 
 class ExpSumOutput(BaseModel):
     result: float
+
+class ScheduleMeetingInput(BaseModel):
+    audience_email_dl: str
+    meeting_date: str
+    meeting_duration: int
+    start_time: str

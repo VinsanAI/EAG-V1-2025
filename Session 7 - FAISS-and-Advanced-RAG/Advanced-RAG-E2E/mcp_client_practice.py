@@ -6,7 +6,7 @@ from pathlib import Path
 from perception import extract_perception
 from memory import MemoryManager, MemoryItem
 from decision import generate_plan
-# from action import execute_tool
+from action import execute_tool
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
  # use this to connect to running server
@@ -149,6 +149,16 @@ async def main(user_input: str):
 
                             plan = generate_plan(perception, retrieved, tool_descriptions=tool_descriptions)
                             log("plan", f"Plan generated: {plan}")
+
+                            if plan.startswith("FINAL_ANSWER:"):
+                                log("agent", f"✅ FINAL RESULT: {plan}")
+                                # break
+
+                            try:
+                                result = await execute_tool(session, tools, plan)
+                                log("tool", f"{result.tool_name} returned: {result.result}")
+                            except Exception as e:
+                                print(e)
 
                             # while step < max_steps:
                             #     log("loop", f"Step {step + 1} started")
