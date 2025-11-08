@@ -17,7 +17,7 @@ def log(stage: str, msg: str):
     now = datetime.datetime.now().strftime("%H:%M:%S")
     print(f"[{now}] [{stage}] {msg}")
 
-max_steps = 5
+max_steps = 3
 ROOT = Path(__file__).parent.resolve()
 
 async def main(user_input: str):
@@ -63,7 +63,7 @@ async def main(user_input: str):
                             while step <= max_steps:
                                 log("loop", f"Step {step + 1} started")
 
-                                perception = extract_perception(user_input+"\nWhat should I do next?")
+                                perception = extract_perception(user_input)
                                 log("perception", f"Intent: {perception.intent}, Tool hint: {perception.tool_hint}")
 
                                 retrieved = memory.retrieve(query=user_input, top_k=3, session_filter=session_id)
@@ -92,14 +92,11 @@ async def main(user_input: str):
                                     )
 
                                     # user_input = f"Original task: {query}\n Previous output: {result.result}\n what should i do next?"
-                                    if step == 0:
-                                        user_input = f"""Original task: {query}\n"""
-                                    
-                                    user_input = user_input + f"""
-iteration_{step+1}:
-    LLM output is: {plan}\n \
-    Called {result.tool_name} it returned: {result.result}\n                                    
-"""
+                    
+                                    user_input = f"Original task: {query}\n \
+Previous llm output: {plan}\n \
+Called {result.tool_name} it returned: {result.result}\n \
+What should I do next?"
 
                                     print("-"*50)
                                     print(user_input)
