@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from google import genai
 import datetime
 import os
+from perception import generate_with_phi4
 
 def log(stage: str, msg: str):
     now = datetime.datetime.now().strftime("%H:%M:%S")
@@ -70,6 +71,7 @@ IMPORTANT:
 - ❌ Do NOT output unstructured responses.
 - 🧠 Think before each step. Verify intermediate results mentally before proceeding.
 - 💥 If unsure or no tool fits, skip to FINAL_ANSWER: [unknown]
+- **STRICTLY** do not provide FUNCTION_CALL and FINAL_ANSWER in the same response.
 - ✅ You have only 3 attempts. Final attempt must be FINAL_ANSWER]
     """
 
@@ -80,6 +82,11 @@ IMPORTANT:
         )
         raw = response.text.strip()
         log("plan", f"LLM output: {raw}")
+
+        # Ollama - Phi4 Code
+        # response = generate_with_phi4(user_input=prompt)
+        # raw = response.strip()
+        # log("plan", f"LLM output: {raw}")
 
         for line in raw.splitlines():
             if line.strip().startswith("FUNCTION_CALL:") or line.strip().startswith("FINAL_ANSWER:"):

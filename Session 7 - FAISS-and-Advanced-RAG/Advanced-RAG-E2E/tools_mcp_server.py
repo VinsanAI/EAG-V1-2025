@@ -148,10 +148,10 @@ def search_documents(query: str) -> list[str]:
         return [f"Error - Failed to search: {str(e)}"]
 
 @mcp.tool()
-def add(input: AddInput) -> AddOutput:
+def add(a: float, b: float) -> OneFloatOutput:
     """Add two numbers"""
-    print("CALLED: add(AddInput) -> AddOutput")
-    return AddOutput(result=input.a + input.b)
+    print("CALLED: add(input: AddInput) -> AddOutput")
+    return OneFloatOutput(result=a + b)
 
 @mcp.tool()
 def sqrt(input: SqrtInput) -> SqrtOutput:

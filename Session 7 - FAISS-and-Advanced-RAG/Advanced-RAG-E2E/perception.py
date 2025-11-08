@@ -6,6 +6,7 @@ from google import genai
 import re
 import datetime
 import ollama
+import requests
 
 def log(stage: str, msg: str):
     now = datetime.datetime.now().strftime("%H:%M:%S")
@@ -20,6 +21,16 @@ class PerceptionResult(BaseModel):
     intent: Optional[str]
     entities: List[str] = []
     tool_hint: Optional[str] = None
+
+def generate_with_phi4(user_input: str) -> str:
+    local_llm_url = "http://localhost:11434/api/generate"
+    local_llm_model = "phi4"
+    response = requests.post(
+            local_llm_url,
+            json={"model": local_llm_model, "prompt": user_input, "stream": False}
+        )
+    response.raise_for_status()
+    return(response.json()['response'])
 
 def extract_perception(user_input: str) -> PerceptionResult:
     """Extracts intent, entities and tool hints using LLM"""
@@ -69,19 +80,10 @@ Return the response as a single-line Python dictionary with the following keys:
         # )
         # raw = response.text.strip()
 
-        # Ollama - Phi4 Code
-        model_name = "phi4"
-        messages = [
-            {
-                'role': "user",
-                'content': prompt
-            }
-        ]
-        
-        response = ollama.chat(model=model_name, messages=messages)
+        response = generate_with_phi4(user_input=prompt)
         # print(response['message']['content'])
         
-        raw = response['message']['content'].strip()
+        raw = response.strip()
         log("perception", f"LLM output: {raw}")
 
         clean = re.sub(r"^```json|```$", "", raw.strip(), flags=re.MULTILINE).strip()
@@ -106,6 +108,8 @@ Return the response as a single-line Python dictionary with the following keys:
 #     user_input = input("Provide the input to process:\n>>")
 #     result = extract_perception(user_input=user_input)
 #     print(result)
+    # result = generate_with_phi4("Respond with any random number between 1 to 1000, STRICTLY respond with only a number")
+    # print(result)
 
 # Schedule a meeting with my internal DataScience team on November 5, 2025 regarding immediate analysis on customer service agents performance
 # What is the sum of 5 and 6?
